@@ -81,9 +81,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Um estúdio criativo dedicado a transformar ideias em experiências digitais memoráveis. Design, tecnologia e estratégia." },
       { name: "author", content: "Estúdio" },
       { property: "og:title", content: "Estúdio — Criamos Experiências Digitais" },
-      { property: "og:description", content: "Um estúdio criativo dedicado a transformar ideias em experiências digitais memoráveis." },
+      { property: "og:description", content: "Um estúdio criativo dedicado a transformar ideias em experiências digitais memoráveis. Design, tecnologia e estratégia." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Estúdio — Criamos Experiências Digitais" },
+      { name: "twitter:description", content: "Um estúdio criativo dedicado a transformar ideias em experiências digitais memoráveis. Design, tecnologia e estratégia." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/543febc6-fe16-4a9d-bdb7-595b7d009056/id-preview-98b19a10--7c93842c-af41-4cc4-b49a-2eeecbefe44e.lovable.app-1781775129144.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/543febc6-fe16-4a9d-bdb7-595b7d009056/id-preview-98b19a10--7c93842c-af41-4cc4-b49a-2eeecbefe44e.lovable.app-1781775129144.png" },
     ],
     links: [
       {
