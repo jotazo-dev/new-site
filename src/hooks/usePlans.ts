@@ -18,6 +18,8 @@ export function usePlans() {
   return useQuery<Plan[]>({
     queryKey: ["plans"],
     queryFn: async () => {
+      if (SUPABASE_DISABLED) return fallbackPlans;
+
       const { data, error } = await supabase
         .from("plans")
         .select(
@@ -29,6 +31,7 @@ export function usePlans() {
         .order("sort_order", { ascending: true });
 
       if (error) throw error;
+      if (!data || data.length === 0) return fallbackPlans;
 
       return (data ?? []).map((row) => ({
         id: row.id,
