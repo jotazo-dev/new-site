@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_DISABLED } from "@/integrations/supabase/client";
 import type { Plan, PlanIncludeItem } from "@/data/plans";
+import { fallbackPlans } from "@/data/fallbackPlans";
 
 function normalizeIncludes(raw: unknown): PlanIncludeItem[] {
   if (!Array.isArray(raw)) return [];
