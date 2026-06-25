@@ -5,23 +5,115 @@ import type { Database } from './types';
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
+/**
+ * Flag para desativar completamente o Supabase em modo local.
+ * Quando `VITE_DISABLE_SUPABASE=true`, nenhuma chamada de rede é feita —
+ * todas as queries retornam `{ data: null, error: null }` e auth fica inerte.
+ * Útil enquanto o banco está vazio / sem tabelas migradas.
+ */
+export const SUPABASE_DISABLED =
+  import.meta.env.VITE_DISABLE_SUPABASE === 'true' ||
+  !SUPABASE_URL ||
+  !SUPABASE_PUBLISHABLE_KEY;
+
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-// NOTE: typed as `any` schema because the connected Supabase project is empty
-// and legacy admin components reference tables that don't exist yet in this DB.
-// Once tables are recreated via migrations, the generated Database type will
-// re-add the strong typing automatically.
-export const supabase: SupabaseClient<any, "public", any> = createClient<any>(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY,
-  {
-    auth: {
-      storage: localStorage,
-      persistSession: true,
-      autoRefreshToken: true,
+function createStubClient(): SupabaseClient<any, 'public', any> {
+  const emptyResult = { data: null, error: null, count: null, status: 200, statusText: 'OK' };
+  const emptyList = { data: [], error: null, count: 0, status: 200, statusText: 'OK' };
+
+  // Chainable query builder stub — every method returns `this`, and the object
+  // is thenable so `await supabase.from(...).select(...)` resolves cleanly.
+  const makeBuilder = (resolved: any = emptyList): any => {
+    const builder: any = new Proxy(
+      {
+        then: (onFulfilled: any, onRejected: any) =>
+          Promise.resolve(resolved).then(onFulfilled, onRejected),
+        catch: (onRejected: any) => Promise.resolve(resolved).catch(onRejected),
+        finally: (cb: any) => Promise.resolve(resolved).finally(cb),
+      },
+      {
+        get(target, prop) {
+          if (prop in target) return (target as any)[prop];
+          if (prop === 'single' || prop === 'maybeSingle') {
+            return () => makeBuilder(emptyResult);
+          }
+          return () => builder;
+        },
+      },
+    );
+    return builder;
+  };
+
+  const channelStub: any = {
+    on: () => channelStub,
+    subscribe: (cb?: any) => {
+      cb?.('SUBSCRIBED');
+      return channelStub;
     },
-  }
-);
+    unsubscribe: () => Promise.resolve('ok'),
+    send: () => Promise.resolve('ok'),
+    track: () => Promise.resolve('ok'),
+    untrack: () => Promise.resolve('ok'),
+  };
+
+  const auth: any = {
+    getSession: async () => ({ data: { session: null }, error: null }),
+    getUser: async () => ({ data: { user: null }, error: null }),
+    onAuthStateChange: () => ({
+      data: { subscription: { unsubscribe: () => {} } },
+    }),
+    signInWithPassword: async () => ({ data: { user: null, session: null }, error: new Error('Supabase desativado') }),
+    signInWithOAuth: async () => ({ data: { provider: null, url: null }, error: new Error('Supabase desativado') }),
+    signUp: async () => ({ data: { user: null, session: null }, error: new Error('Supabase desativado') }),
+    signOut: async () => ({ error: null }),
+    updateUser: async () => ({ data: { user: null }, error: null }),
+    resetPasswordForEmail: async () => ({ data: {}, error: null }),
+  };
+
+  const storage: any = {
+    from: () => ({
+      upload: async () => ({ data: null, error: new Error('Supabase desativado') }),
+      download: async () => ({ data: null, error: new Error('Supabase desativado') }),
+      remove: async () => ({ data: null, error: null }),
+      list: async () => ({ data: [], error: null }),
+      getPublicUrl: () => ({ data: { publicUrl: '' } }),
+      createSignedUrl: async () => ({ data: null, error: null }),
+    }),
+  };
+
+  const stub: any = {
+    from: () => makeBuilder(),
+    rpc: () => makeBuilder(emptyResult),
+    channel: () => channelStub,
+    removeChannel: () => Promise.resolve('ok'),
+    removeAllChannels: () => Promise.resolve([]),
+    getChannels: () => [],
+    auth,
+    storage,
+    functions: {
+      invoke: async () => ({ data: null, error: new Error('Supabase desativado') }),
+    },
+  };
+
+  return stub as SupabaseClient<any, 'public', any>;
+}
+
+export const supabase: SupabaseClient<any, 'public', any> = SUPABASE_DISABLED
+  ? createStubClient()
+  : createClient<any>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+      auth: {
+        storage: localStorage,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    });
+
+if (SUPABASE_DISABLED && typeof console !== 'undefined') {
+  console.info(
+    '[supabase] Cliente em modo OFFLINE (VITE_DISABLE_SUPABASE=true ou env ausente). Nenhuma chamada de rede será feita.',
+  );
+}
 
 export type { Database };
