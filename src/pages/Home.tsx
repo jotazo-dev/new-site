@@ -382,7 +382,6 @@ export default function HomePage() {
 
       <div className="mt-20 space-y-20 px-2 md:px-0">
       <PremiumPlansSection />
-      <CoverageCheckSection />
       <SelfServiceSection />
       <Chip5GBrasilSection />
 
@@ -395,13 +394,7 @@ export default function HomePage() {
 
       {/* Lazy chunks with idle prefetch */}
       <LazySection minHeight="400px" prefetch={prefetchCombo}><ComboOffersSection /></LazySection>
-      <LazySection minHeight="400px" prefetch={prefetchServices}><ServicesOverviewSection /></LazySection>
-      <LazySection minHeight="400px" prefetch={prefetchTv}>
-        <div className="cv-auto"><TVStreamingSection /></div>
-      </LazySection>
-      <LazySection minHeight="500px" prefetch={prefetchNetflix}>
-        <div className="cv-auto"><NetflixCatalogSection /></div>
-      </LazySection>
+
       <LazySection minHeight="300px" prefetch={prefetchAppDownload}><AppDownloadSection /></LazySection>
       <LazySection minHeight="400px" prefetch={prefetchBlog}><BlogSection /></LazySection>
       <LazySection minHeight="300px" prefetch={prefetchHighlight}><HighlightCardsSection /></LazySection>
