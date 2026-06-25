@@ -162,11 +162,30 @@ function HeroCarousel() {
     return () => window.clearInterval(timer);
   }, [api, paused, slides.length, intervalMs]);
 
-  if (isLoading || slides.length === 0) {
+  if (isLoading) {
     return (
       <div className="aspect-[1536/1200] md:aspect-[1920/600] w-full">
         <Skeleton className="h-full w-full rounded-none" />
       </div>
+    );
+  }
+
+  if (slides.length === 0) {
+    return (
+      <section className="relative w-full">
+        <div className="aspect-[1536/1200] md:aspect-[1920/600] w-full">
+          <img
+            src={heroBannerFallback}
+            alt="Jotazo Telecom"
+            width={1920}
+            height={600}
+            className="block w-full h-full object-cover object-center"
+            loading="eager"
+            decoding="async"
+            {...({ fetchPriority: "high" } as any)}
+          />
+        </div>
+      </section>
     );
   }
 
