@@ -41,21 +41,22 @@ async function main() {
     .select("path, priority, changefreq")
     .eq("active", true)
     .order("sort_order", { ascending: true });
-  if (pagesErr) throw pagesErr;
+  if (pagesErr) console.warn("sitemap_pages unavailable:", pagesErr.message);
 
   const { data: posts, error: postsErr } = await supabase
     .from("blog_posts")
     .select("slug, updated_at")
     .eq("active", true)
     .order("sort_order", { ascending: true });
-  if (postsErr) throw postsErr;
+  if (postsErr) console.warn("blog_posts unavailable:", postsErr.message);
 
   const { data: cities, error: citiesErr } = await supabase
     .from("coverage_cities")
     .select("name, updated_at")
     .eq("active", true)
     .order("sort_order", { ascending: true });
-  if (citiesErr) throw citiesErr;
+  if (citiesErr) console.warn("coverage_cities unavailable:", citiesErr.message);
+
 
   function citySlugify(name: string): string {
     return name
