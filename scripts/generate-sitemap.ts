@@ -34,6 +34,12 @@ function urlXml(loc: string, e: SitemapEntry) {
 }
 
 async function main() {
+  if (process.env.VITE_DISABLE_SUPABASE === "true") {
+    console.warn("[sitemap] VITE_DISABLE_SUPABASE=true — gerando sitemap mínimo só com '/'.");
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urlXml(BASE_URL + "/", { path: "/", priority: "1.0", changefreq: "weekly" })}\n</urlset>\n`;
+    writeFileSync(resolve(process.cwd(), "dist/sitemap.xml"), xml);
+    return;
+  }
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const { data: pages, error: pagesErr } = await supabase
