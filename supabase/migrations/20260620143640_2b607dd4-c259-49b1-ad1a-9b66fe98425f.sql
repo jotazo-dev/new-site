@@ -1,0 +1,2 @@
+ALTER TABLE public.cielo_config ALTER COLUMN provider_pix_sandbox SET DEFAULT 'Cielo2';
+UPDATE public.cielo_config SET provider_pix_sandbox = 'Cielo2' WHERE provider_pix_sandbox IS NULL OR provider_pix_sandbox = 'Cielo30';

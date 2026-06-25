@@ -1,0 +1,1 @@
+ALTER TABLE public.pages ADD COLUMN og_image TEXT NOT NULL DEFAULT '';

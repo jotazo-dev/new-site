@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Public can read instagram_settings" ON public.instagram_settings;

@@ -1,0 +1,1 @@
+ALTER TABLE public.esim_records ADD COLUMN IF NOT EXISTS novo_numero text;

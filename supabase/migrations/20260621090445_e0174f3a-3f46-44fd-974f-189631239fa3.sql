@@ -1,0 +1,2 @@
+UPDATE public.provisioning_jobs SET status='pending', attempts=0, next_run_at=now(), last_error=null, locked_at=null, locked_by=null WHERE order_id='453db93c-9a68-47f9-8038-c33bc7811c17';
+UPDATE public.checkout_orders SET provisioning_status='not_started', provisioning_attempts=0, provisioning_last_error=null WHERE id='453db93c-9a68-47f9-8038-c33bc7811c17';

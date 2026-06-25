@@ -1,0 +1,3 @@
+UPDATE public.provisioning_jobs SET status='pending', attempts=0, next_run_at=now(), last_error=null, locked_at=null, locked_by=null WHERE order_id='453db93c-9a68-47f9-8038-c33bc7811c17';
+UPDATE public.checkout_orders SET provisioning_status='not_started', provisioning_attempts=0, provisioning_last_error=null, msisdn=null, iccid=null, esim_activation_code=null, esim_qr_url=null, algar_mobileline_id=null WHERE id='453db93c-9a68-47f9-8038-c33bc7811c17';
+DELETE FROM public.mvno_activations WHERE checkout_order_id='453db93c-9a68-47f9-8038-c33bc7811c17';

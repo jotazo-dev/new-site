@@ -1,0 +1,1 @@
+UPDATE public.mvno_activations SET activation_code = raw_response->'card'->>'activationData', qr_payload = raw_response->'card'->>'activationData' WHERE tn='15960003980' AND (activation_code IS NULL OR activation_code='') AND raw_response->'card'->>'activationData' IS NOT NULL;

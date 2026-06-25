@@ -1,0 +1,1 @@
+UPDATE public.site_settings SET value='Chip 5G Black Four Channel' WHERE key='chip2_name';

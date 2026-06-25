@@ -1,0 +1,1 @@
+ALTER TABLE public.plans ADD COLUMN logo_url text NOT NULL DEFAULT '';

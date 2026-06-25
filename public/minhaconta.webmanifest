@@ -1,0 +1,64 @@
+{
+  "name": "Jotazo Telecom",
+  "short_name": "Jotazo",
+  "description": "Acesse suas faturas Jotazo Telecom, 2ª via de boleto e PIX.",
+  "id": "/minhaconta/",
+  "start_url": "/minhaconta/",
+  "scope": "/minhaconta/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "theme_color": "#00358f",
+  "background_color": "#001a4d",
+  "categories": ["business", "utilities", "finance"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/minhaconta-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/minhaconta-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/minhaconta-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/minhaconta-screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Minha Conta no celular"
+    },
+    {
+      "src": "/minhaconta-screenshot-wide.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Minha Conta no desktop"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Faturas",
+      "url": "/minhaconta/?view=faturas",
+      "icons": [{ "src": "/minhaconta-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "2ª via",
+      "url": "/minhaconta/?view=segunda-via",
+      "icons": [{ "src": "/minhaconta-icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

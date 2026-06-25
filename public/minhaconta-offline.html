@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta Jotazo — Offline</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #00358f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        img { width: 120px; margin-bottom: 20px; }
+        h1 { font-size: 24px; margin-bottom: 10px; }
+        p { font-size: 16px; opacity: 0.8; }
+        button {
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: white;
+            color: #00358f;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="/minhaconta-icon-192.png" alt="Logo">
+    <h1>Você está offline</h1>
+    <p>Reconecte-se à internet para acessar sua conta e ver suas faturas.</p>
+    <button onclick="window.location.reload()">Tentar novamente</button>
+</body>
+</html>

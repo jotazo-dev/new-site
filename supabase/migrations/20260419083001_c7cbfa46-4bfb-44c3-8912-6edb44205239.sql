@@ -1,0 +1,13 @@
+CREATE INDEX IF NOT EXISTS idx_plans_active_sort ON public.plans (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_hero_banners_active_sort ON public.hero_banners (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_blog_posts_active_sort ON public.blog_posts (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON public.blog_posts (slug);
+CREATE INDEX IF NOT EXISTS idx_page_top_banners_active_sort ON public.page_top_banners (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_page_top_banners_path ON public.page_top_banners (path) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_mid_banners_active_sort ON public.mid_banners (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_promo_banners_active_sort ON public.promo_banners (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_testimonials_active_sort ON public.testimonials (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_faqs_active_sort ON public.faqs (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_announcements_active_sort ON public.announcements (active, sort_order) WHERE active = true;
+CREATE INDEX IF NOT EXISTS idx_site_settings_key ON public.site_settings (key);
+CREATE INDEX IF NOT EXISTS idx_theme_schedules_active ON public.theme_schedules (active, starts_at, ends_at) WHERE active = true;

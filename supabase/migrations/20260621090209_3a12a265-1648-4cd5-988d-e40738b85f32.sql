@@ -1,0 +1,1 @@
+UPDATE public.integrations SET config = jsonb_set(config, '{environment}', '"sandbox"'), updated_at = now() WHERE provider = 'algar';

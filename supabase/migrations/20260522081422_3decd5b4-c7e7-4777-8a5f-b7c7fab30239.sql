@@ -1,0 +1,1 @@
+UPDATE public.eai_config SET base_url='https://hml-mvno.eai.net.br/api/', oauth_url='https://hml-mvno.eai.net.br/oauth2/token', environment='sandbox';

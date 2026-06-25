@@ -1,0 +1,49 @@
+# Jotazo Telecom
+
+> Provedor regional de internet fibra óptica, internet móvel 5G, TV por assinatura e streaming, com sede em Apiaí/SP e cobertura em toda a região do Vale do Ribeira.
+
+A Jotazo Telecom atende clientes residenciais e empresariais com planos sem fidelidade, instalação gratuita e suporte humano 24/7 via WhatsApp. Diferenciais: fibra simétrica (download = upload), Wi-Fi 6 incluso, IP fixo disponível, SLA contratual para empresas e combos com até 30% de desconto.
+
+## Planos e produtos
+
+- [Todos os planos](https://jotazo.com.br/planos): catálogo completo de fibra, 5G, TV e combos
+- [Internet fibra residencial](https://jotazo.com.br/para-voce): velocidades de 300 Mbps a 1 Gbps simétrica
+- [Internet gamer fibra 1Giga](https://jotazo.com.br/internet-gamer): fibra simétrica com ping baixo (<20ms), Wi-Fi 6 e NAT aberto, otimizada para Valorant, LoL, CS2, Fortnite, Free Fire e Rocket League
+- [Internet empresarial](https://jotazo.com.br/para-empresas): fibra dedicada, IP fixo e SLA garantido
+- [Internet móvel 5G](https://jotazo.com.br/internet-movel): chip 5G com cobertura nacional, eSIM disponível
+- [TV e streaming](https://jotazo.com.br/streaming): +100 canais HD, filmes, séries e esportes ao vivo
+- [Monte seu combo](https://jotazo.com.br/monte-seu-combo): personalize fibra + 5G + TV com desconto
+- [Planos de chip 5G](https://jotazo.com.br/planos-chip): chips pré e pós-pago
+
+## Cobertura e atendimento
+
+- [Verificar cobertura por CEP](https://jotazo.com.br/cobertura): consulta de disponibilidade em tempo real
+- [Atendimento](https://jotazo.com.br/atendimento): WhatsApp, telefone e canais de suporte
+- [Central de ajuda](https://jotazo.com.br/ajuda): tutoriais, dúvidas frequentes e guias técnicos
+- [Teste de velocidade](https://jotazo.com.br/teste-de-velocidade): meça sua conexão em download, upload, ping e jitter
+
+## Sobre a empresa
+
+- [Sobre a Jotazo](https://jotazo.com.br/sobre): história, valores, equipe e missão
+- [Trabalhe conosco](https://jotazo.com.br/trabalhe-conosco): vagas abertas
+- [Indique e ganhe](https://jotazo.com.br/indique): programa de indicação
+- [Blog](https://jotazo.com.br/blog): artigos sobre internet, 5G, segurança e tecnologia
+
+## Documentos e transparência
+
+- [Transparência da rede](https://jotazo.com.br/transparencia-rede): qualidade técnica e indicadores
+- [Política de privacidade](https://jotazo.com.br/privacidade)
+- [Termos de uso](https://jotazo.com.br/termos)
+- [Política de cookies](https://jotazo.com.br/cookies)
+- [Regulamentos](https://jotazo.com.br/regulamento)
+- [Ouvidoria](https://jotazo.com.br/ouvidoria)
+
+## Cidades atendidas
+
+Apiaí, Registro, Pariquera-Açu, Jacupiranga, Cajati, Cananéia, Iguape, Ilha Comprida, Eldorado, Sete Barras, Juquiá, Miracatu, Ribeira, Itapirapuã Paulista, Barra do Chapéu, Itaóca.
+
+## Contato
+
+- Site: https://jotazo.com.br
+- WhatsApp: 0800 721 0179
+- Instagram: https://instagram.com/jotazotelecom

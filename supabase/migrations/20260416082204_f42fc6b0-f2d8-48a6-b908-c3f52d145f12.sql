@@ -1,0 +1,1 @@
+ALTER TABLE public.plans ADD COLUMN conditions text NOT NULL DEFAULT '';

@@ -1,0 +1,1 @@
+ALTER TABLE public.plans ADD COLUMN icon text NOT NULL DEFAULT 'check';

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Webmail Jotazo — Offline</title>
+    <meta name="theme-color" content="#00358f" />
+    <link rel="apple-touch-icon" href="/webmail-apple-touch-180.png" />
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; height: 100%; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background:
+          radial-gradient(at 20% 10%, rgba(59,130,246,0.35) 0, transparent 50%),
+          radial-gradient(at 80% 90%, rgba(255,140,40,0.18) 0, transparent 50%),
+          linear-gradient(135deg, #001a4d 0%, #00358f 60%, #0a1e5c 100%);
+        color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        padding: env(safe-area-inset-top) 24px env(safe-area-inset-bottom);
+        min-height: 100dvh;
+      }
+      .card {
+        max-width: 380px; width: 100%; text-align: center;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        border-radius: 24px; padding: 32px 24px;
+        box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+      }
+      .icon {
+        width: 72px; height: 72px; border-radius: 20px;
+        background: linear-gradient(135deg, #3b82f6, #00358f);
+        display: grid; place-items: center; margin: 0 auto 20px;
+        box-shadow: 0 10px 30px -10px rgba(59,130,246,0.6);
+      }
+      h1 { font-size: 22px; margin: 0 0 8px; font-weight: 700; }
+      p { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+      button {
+        width: 100%; height: 48px; border-radius: 14px; border: 0;
+        background: #fff; color: #00358f; font-weight: 600; font-size: 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h1>Você está offline</h1>
+      <p>Não foi possível conectar ao Webmail Jotazo. Verifique sua conexão e tente novamente.</p>
+      <button onclick="location.reload()">Tentar novamente</button>
+    </main>
+  </body>
+</html>

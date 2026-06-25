@@ -1,0 +1,50 @@
+project_id = ""
+
+[functions.rbx-agenda-public]
+verify_jwt = false
+
+[functions.instagram-feed]
+verify_jwt = false
+
+[functions.sitemap]
+verify_jwt = false
+
+[functions.webmail-login]
+verify_jwt = false
+
+[functions.webmail-logout]
+verify_jwt = false
+
+[functions.webmail-folders]
+verify_jwt = false
+
+[functions.webmail-list]
+verify_jwt = false
+
+[functions.webmail-message]
+verify_jwt = false
+
+[functions.webmail-send]
+verify_jwt = false
+
+[functions.webmail-action]
+verify_jwt = false
+
+
+[functions.asaas-webhook]
+verify_jwt = false
+
+[functions.cielo-webhook]
+verify_jwt = false
+
+[functions.mercadopago-webhook]
+verify_jwt = false
+
+[functions.signup-customer-lookup]
+verify_jwt = false
+
+[functions.resolve-login-email]
+verify_jwt = false
+
+
+

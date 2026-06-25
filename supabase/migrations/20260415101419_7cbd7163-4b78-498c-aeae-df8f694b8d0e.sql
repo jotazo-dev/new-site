@@ -1,0 +1,1 @@
+ALTER TABLE public.plans ADD COLUMN original_price_cents integer NOT NULL DEFAULT 0;

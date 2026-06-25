@@ -1,0 +1,1 @@
+UPDATE public.eai_config SET company_token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyIiwic3ViIjoiODg3IiwicGlkIjoxLCJjaWQiOjEsInJlcyI6MTAxLCJycGkiOjQwMTUwfQ.eJ5xNkeL976LIE7lm7OjjtbCNGZ03XWcfuGGFTsYtBn3hN5avxRJmM8qeD0Z0zJgE0FxT7ueOMJgbCYu8-KDpQ' WHERE id = '07ce1faa-b5b8-464d-88af-675b16f41d1f';

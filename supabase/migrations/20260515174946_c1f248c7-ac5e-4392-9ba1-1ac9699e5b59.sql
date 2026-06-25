@@ -1,0 +1,1 @@
+DELETE FROM public.sitemap_pages WHERE path LIKE '/cobertura/%';

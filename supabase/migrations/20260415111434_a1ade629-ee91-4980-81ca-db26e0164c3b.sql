@@ -1,0 +1,1 @@
+ALTER TABLE public.mid_banners ADD COLUMN link_url text NOT NULL DEFAULT '';

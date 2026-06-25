@@ -1,0 +1,1 @@
+ALTER TABLE public.plans ADD COLUMN sva_ids jsonb NOT NULL DEFAULT '[]'::jsonb;

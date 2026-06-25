@@ -1,0 +1,1 @@
+ALTER TABLE public.rbx_plans_cache ADD COLUMN IF NOT EXISTS kind text CHECK (kind IN ('fibra','movel'));

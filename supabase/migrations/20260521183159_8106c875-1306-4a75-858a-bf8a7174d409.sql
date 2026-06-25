@@ -1,0 +1,1 @@
+ALTER TABLE public.eai_config ADD COLUMN IF NOT EXISTS oauth_scope text, ADD COLUMN IF NOT EXISTS oauth_audience text, ADD COLUMN IF NOT EXISTS company_token_header text NOT NULL DEFAULT 'CompanyToken';

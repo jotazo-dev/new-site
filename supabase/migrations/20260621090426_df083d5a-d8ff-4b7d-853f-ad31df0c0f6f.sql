@@ -1,0 +1,2 @@
+UPDATE public.integrations SET config = config || '{"environment":"sandbox"}'::jsonb WHERE provider='algar';
+SELECT provider, config->>'environment' AS env FROM public.integrations WHERE provider='algar';

@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "System can insert crm_activities" ON public.crm_activities;

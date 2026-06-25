@@ -1,0 +1,2901 @@
+{
+  "basePath": "/api",
+  "host_prod": "https://api.eai.net.br",
+  "host_hml": "https://hml-mvno.eai.net.br",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/companies",
+      "raw_path": "/rest/service_eai/companies",
+      "operationId": "EaiService_GetCompanies",
+      "summary": "Get companies",
+      "description": "",
+      "group": "01-customers.md",
+      "parameters": [
+        {
+          "type": "boolean",
+          "name": "doNotGenToken",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiGetCompaniesResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/customers",
+      "raw_path": "/rest/service_eai/customers",
+      "operationId": "EaiService_ReadAllCustomers",
+      "summary": "Read all customers",
+      "description": "",
+      "group": "01-customers.md",
+      "parameters": [
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "useIndex",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadAllCustomersResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/customers",
+      "raw_path": "/rest/service_eai/customers",
+      "operationId": "EaiService_CreateCustomer",
+      "summary": "Create a new customer",
+      "description": "",
+      "group": "01-customers.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "v1eaiCreateCustomerRequest",
+            "type": "object",
+            "properties": {
+              "addresses": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "eaiCreateCustomerRequestAddress",
+                  "note": "see definitions"
+                }
+              },
+              "birthdate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "contacts": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "eaiCustomerContact",
+                  "note": "see definitions"
+                }
+              },
+              "cpfCnpj": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "legalName": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "rgIe": {
+                "type": "string"
+              },
+              "status": {
+                "$ref_name": "commonActiveInactive",
+                "type": "string",
+                "default": "Inactive",
+                "enum": [
+                  "Inactive",
+                  "Active"
+                ]
+              },
+              "type": {
+                "$ref_name": "commonPersonType",
+                "type": "string",
+                "title": "- Unknown: utilizado somente internamente na importação por planilha; não utilizar para salvar no banco",
+                "default": "Individual",
+                "enum": [
+                  "Individual",
+                  "Entity",
+                  "Foreigner",
+                  "Unknown"
+                ]
+              },
+              "typeTelecom": {
+                "$ref_name": "commonPersonTypeTelecom",
+                "type": "string",
+                "default": "ptlNone",
+                "enum": [
+                  "ptlNone",
+                  "ptlComercial",
+                  "ptlIndustrial",
+                  "ptlResidencial",
+                  "ptlProdutorRural",
+                  "ptlOrgaoPublico",
+                  "ptlPrestadorTelecom",
+                  "ptlMissoesDiplomaticas",
+                  "ptlIgrejas",
+                  "ptlComercialMesmaNatureza",
+                  "ptlOutros"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiCreateCustomerResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/customers/check_already_exists/{cpfCnpj}",
+      "raw_path": "/rest/service_eai/customers/check_already_exists/{cpfCnpj}",
+      "operationId": "EaiService_CustomerCheckAlreadyExists",
+      "summary": "Check if customer already exists",
+      "description": "",
+      "group": "01-customers.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "cpfCnpj",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiCustomerCheckAlreadyExistsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/customers/{id}",
+      "raw_path": "/rest/service_eai/customers/{id}",
+      "operationId": "EaiService_ReadCustomer",
+      "summary": "Read customer by Id",
+      "description": "",
+      "group": "01-customers.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadCustomerResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/rest/service_eai/customers/{id}",
+      "raw_path": "/rest/service_eai/customers/{id}",
+      "operationId": "EaiService_UpdateCustomer",
+      "summary": "Update customer",
+      "description": "",
+      "group": "01-customers.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiEaiServiceUpdateCustomerBody",
+            "type": "object",
+            "properties": {
+              "addresses": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "eaiUpdateCustomerRequestAddress",
+                  "note": "see definitions"
+                }
+              },
+              "birthdate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "contacts": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "eaiCustomerContact",
+                  "note": "see definitions"
+                }
+              },
+              "cpfCnpj": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "legalName": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "rgIe": {
+                "type": "string"
+              },
+              "status": {
+                "$ref_name": "commonActiveInactive",
+                "type": "string",
+                "default": "Inactive",
+                "enum": [
+                  "Inactive",
+                  "Active"
+                ]
+              },
+              "type": {
+                "$ref_name": "commonPersonType",
+                "type": "string",
+                "title": "- Unknown: utilizado somente internamente na importação por planilha; não utilizar para salvar no banco",
+                "default": "Individual",
+                "enum": [
+                  "Individual",
+                  "Entity",
+                  "Foreigner",
+                  "Unknown"
+                ]
+              },
+              "typeTelecom": {
+                "$ref_name": "commonPersonTypeTelecom",
+                "type": "string",
+                "default": "ptlNone",
+                "enum": [
+                  "ptlNone",
+                  "ptlComercial",
+                  "ptlIndustrial",
+                  "ptlResidencial",
+                  "ptlProdutorRural",
+                  "ptlOrgaoPublico",
+                  "ptlPrestadorTelecom",
+                  "ptlMissoesDiplomaticas",
+                  "ptlIgrejas",
+                  "ptlComercialMesmaNatureza",
+                  "ptlOutros"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiUpdateCustomerResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_carts",
+      "raw_path": "/rest/service_eai/mvno_carts",
+      "operationId": "EaiService_ReadAllMvnoCarts",
+      "summary": "Read all mvno carts",
+      "description": "",
+      "group": "02-mvno-carts.md",
+      "parameters": [
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "document",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "msisdn",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "iccid",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "createdAt.start",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "createdAt.end",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "personId",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "array",
+          "items": {
+            "enum": [
+              "mcsNone",
+              "mcsPending",
+              "mcsCanceled",
+              "mcsProcessed",
+              "mcsPaid"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "multi",
+          "name": "status",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadAllMvnoCartsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_carts",
+      "raw_path": "/rest/service_eai/mvno_carts",
+      "operationId": "EaiService_CreateMvnoCart",
+      "summary": "Create a new Mvno Cart",
+      "description": "",
+      "group": "02-mvno-carts.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiCreateMvnoCartRequest",
+            "type": "object",
+            "properties": {
+              "activation": {
+                "$ref_name": "CreateMvnoCartRequestActivation",
+                "type": "object",
+                "properties": {
+                  "ddd": {
+                    "type": "string"
+                  },
+                  "existingContractId": {
+                    "type": "string",
+                    "format": "uint64"
+                  },
+                  "iccid": {
+                    "type": "string"
+                  },
+                  "msisdn": {
+                    "$ref_name": "CreateMvnoCartRequestSpecificMsisdn",
+                    "note": "see definitions"
+                  },
+                  "mvnoSimCardId": {
+                    "type": "string",
+                    "format": "uint64"
+                  },
+                  "randomESim": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "billingType": {
+                "$ref_name": "eaiBillingType",
+                "type": "string",
+                "title": "- btExternalPayment: cobrança externa, ex: cobrado do cliente por um ERP de terceiros\n - btInternalPayment: cobrança por contrato",
+                "default": "btExternalPayment",
+                "enum": [
+                  "btExternalPayment",
+                  "btInternalPayment"
+                ]
+              },
+              "cartType": {
+                "$ref_name": "eaiMvnoCartType",
+                "type": "string",
+                "default": "mctActivation",
+                "enum": [
+                  "mctActivation",
+                  "mctRecharge",
+                  "mctRecurrence"
+                ]
+              },
+              "origin": {
+                "$ref_name": "eaiMvnoCartOrigin",
+                "type": "string",
+                "default": "mcoApi",
+                "enum": [
+                  "mcoApi",
+                  "mcoAdmin",
+                  "mcoAdminContractActivation",
+                  "mcoRecurrence",
+                  "mcoPortalCustomer"
+                ]
+              },
+              "personId": {
+                "type": "string",
+                "format": "uint64"
+              },
+              "planId": {
+                "type": "string",
+                "format": "uint64"
+              },
+              "portability": {
+                "$ref_name": "eaiCreateMvnoCartRequestPortability",
+                "type": "object",
+                "properties": {
+                  "ddd": {
+                    "type": "string"
+                  },
+                  "existingContractId": {
+                    "type": "string",
+                    "format": "uint64"
+                  },
+                  "iccid": {
+                    "type": "string"
+                  },
+                  "msisdn": {
+                    "type": "string"
+                  },
+                  "mvnoSimCardId": {
+                    "type": "string",
+                    "format": "uint64"
+                  },
+                  "randomESim": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "promotionId": {
+                "type": "string",
+                "format": "uint64"
+              },
+              "recharge": {
+                "$ref_name": "CreateMvnoCartRequestRecharge",
+                "type": "object",
+                "properties": {
+                  "mvnoLine": {
+                    "type": "string"
+                  }
+                }
+              },
+              "recurrence": {
+                "$ref_name": "eaiCreateMvnoCartRequestRecurrence",
+                "type": "object",
+                "properties": {
+                  "day": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "recurrence": {
+                    "$ref_name": "eaiMvnoLineRecurrence",
+                    "note": "see definitions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiCreateMvnoCartResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_carts/available_ddds",
+      "raw_path": "/rest/service_eai/mvno_carts/available_ddds",
+      "operationId": "EaiService_GetAvailableMsisdnDDDs",
+      "summary": "Return list of available Msisdn DDD's",
+      "description": "",
+      "group": "02-mvno-carts.md",
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiGetAvailableMsisdnDDDsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/rest/service_eai/mvno_carts/{cartId}",
+      "raw_path": "/rest/service_eai/mvno_carts/{cartId}",
+      "operationId": "EaiService_CancelMvnoCart",
+      "summary": "Cancel a pending Mvno Cart",
+      "description": "",
+      "group": "02-mvno-carts.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiCancelMvnoCartResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/rest/service_eai/mvno_carts/{cartId}",
+      "raw_path": "/rest/service_eai/mvno_carts/{cartId}",
+      "operationId": "EaiService_ProcessMvnoCart",
+      "summary": "Process a Mvno Cart",
+      "description": "",
+      "group": "02-mvno-carts.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "EaiServiceProcessMvnoCartBody",
+            "type": "object"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiProcessMvnoCartResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/rest/service_eai/mvno_carts/{cartId}/bind_nfcom_chave_local",
+      "raw_path": "/rest/service_eai/mvno_carts/{cartId}/bind_nfcom_chave_local",
+      "operationId": "EaiService_BindMvnoCartNfcomChaveLocal",
+      "summary": "Bind NFCom chave local to a Mvno Cart",
+      "description": "",
+      "group": "02-mvno-carts.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "EaiServiceBindMvnoCartNfcomChaveLocalBody",
+            "type": "object",
+            "properties": {
+              "nfcomChaveLocal": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiBindMvnoCartNfcomChaveLocalResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_lines",
+      "raw_path": "/rest/service_eai/mvno_lines",
+      "operationId": "EaiService_ReadAllMvnoLines",
+      "summary": "Read all mvno Lines",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "document",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "msisdn",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "iccid",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "createdAt.start",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "createdAt.end",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "imsi",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "personId",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "onlyActive",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "array",
+          "items": {
+            "enum": [
+              "mlsNone",
+              "mlsActive",
+              "mlsInactive",
+              "mlsWaitingPortability",
+              "mlsCanceled",
+              "mlsPorted",
+              "mlsPortout",
+              "mlsBlocked",
+              "mlsSuspended",
+              "mlsQuarantine"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "multi",
+          "name": "status",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "forceResellerFilter",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadAllMvnoLinesResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_lines/bulk_consumption",
+      "raw_path": "/rest/service_eai/mvno_lines/bulk_consumption",
+      "operationId": "EaiService_ReadBulkMvnoLineConsumption",
+      "summary": "Read bulk mvno line consumption",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiReadBulkMvnoLineConsumptionRequest",
+            "type": "object",
+            "properties": {
+              "dateInitials": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "msisdn": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadBulkMvnoLineConsumptionResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_lines/{id}",
+      "raw_path": "/rest/service_eai/mvno_lines/{id}",
+      "operationId": "EaiService_ReadMvnoLine",
+      "summary": "Read mvno line by Id",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadMvnoLineResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_lines/{lineId}/consumption",
+      "raw_path": "/rest/service_eai/mvno_lines/{lineId}/consumption",
+      "operationId": "EaiService_ReadMvnoLineConsumption",
+      "summary": "Get mvno line consumption",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "dateInitials",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "dateFinal",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadMvnoLineConsumptionResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_lines/{lineId}/detailed_consumption",
+      "raw_path": "/rest/service_eai/mvno_lines/{lineId}/detailed_consumption",
+      "operationId": "EaiService_ReadMvnoLineDetailedConsumption",
+      "summary": "Read mvno line detailed consumption",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "dateInitials",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "dateFinal",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadMvnoLineDetailedConsumptionResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_lines/{lineId}/post_paid",
+      "raw_path": "/rest/service_eai/mvno_lines/{lineId}/post_paid",
+      "operationId": "EaiService_ReadMvnoLinePostPaid",
+      "summary": "Get mvno line post paid",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "onlyPending",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadMvnoLinePostPaidResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_lines/{lineId}/post_paid",
+      "raw_path": "/rest/service_eai/mvno_lines/{lineId}/post_paid",
+      "operationId": "EaiService_PayMvnoLinePostPaid",
+      "summary": "Pay mvno line post paid",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "EaiServicePayMvnoLinePostPaidBody",
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiPayMvnoLinePostPaidResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_lines/{lineId}/recurrence",
+      "raw_path": "/rest/service_eai/mvno_lines/{lineId}/recurrence",
+      "operationId": "EaiService_ChangeMvnoLineRecurrence",
+      "summary": "Update Line recurrence",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiEaiServiceChangeMvnoLineRecurrenceBody",
+            "type": "object",
+            "properties": {
+              "dueDay": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "imediateUpgradeBillingType": {
+                "$ref_name": "eaiBillingType",
+                "type": "string",
+                "title": "- btExternalPayment: cobrança externa, ex: cobrado do cliente por um ERP de terceiros\n - btInternalPayment: cobrança por contrato",
+                "default": "btExternalPayment",
+                "enum": [
+                  "btExternalPayment",
+                  "btInternalPayment"
+                ]
+              },
+              "paymentMethodType": {
+                "$ref_name": "commonPaymentMethodType",
+                "type": "string",
+                "default": "mtNone",
+                "enum": [
+                  "mtNone",
+                  "mtCurrency",
+                  "mtCreditCard",
+                  "mtDebitCard",
+                  "mtBankDraft",
+                  "mtPix",
+                  "mtBillet",
+                  "mtDraft",
+                  "mtCheckout",
+                  "mtVoucher"
+                ]
+              },
+              "planId": {
+                "type": "string",
+                "format": "uint64"
+              },
+              "recurrence": {
+                "$ref_name": "eaiMvnoLineRecurrence",
+                "type": "string",
+                "default": "mlrNone",
+                "enum": [
+                  "mlrNone",
+                  "mlrRecurrencePrePaid",
+                  "mlrRecurrencPostPaid"
+                ]
+              },
+              "runImediateUpgrade": {
+                "type": "boolean"
+              },
+              "savedCardId": {
+                "type": "string",
+                "format": "uint64"
+              },
+              "suspend": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiChangeMvnoLineRecurrenceResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_lines/{lineId}/sim_card_exchange",
+      "raw_path": "/rest/service_eai/mvno_lines/{lineId}/sim_card_exchange",
+      "operationId": "EaiService_MvnoLineSimCardExchange",
+      "summary": "Sim Card exchange",
+      "description": "",
+      "group": "03-mvno-lines.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "EaiServiceMvnoLineSimCardExchangeBody",
+            "type": "object",
+            "properties": {
+              "newIccid": {
+                "type": "string"
+              },
+              "randomESim": {
+                "type": "boolean"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiMvnoLineSimCardExchangeResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_main_products",
+      "raw_path": "/rest/service_eai/mvno_main_products",
+      "operationId": "EaiService_GetAllMainProducts",
+      "summary": "Read all mvno main products",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "type": "boolean",
+          "name": "showInactive",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "showOnlyAllowedForActivation",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiGetAllMainProductsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_plans",
+      "raw_path": "/rest/service_eai/mvno_plans",
+      "operationId": "EaiService_ReadAllMvnoPlans",
+      "summary": "Read all mvno Plans",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "listOnlyActive",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "resellerPersonId",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Inactive",
+              "Active"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "multi",
+          "name": "status",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadAllMvnoPlansResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_plans/possible_activation_plans",
+      "raw_path": "/rest/service_eai/mvno_plans/possible_activation_plans",
+      "operationId": "EaiService_ReadPossibleActivationMvnoPlans",
+      "summary": "Read possible mvno activation plans",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiReadPossibleActivationMvnoPlansRequest",
+            "type": "object",
+            "properties": {
+              "listOnlyActive": {
+                "type": "boolean"
+              },
+              "listOnlyVisibleInCustomer": {
+                "type": "boolean"
+              },
+              "mvnoMainProductId": {
+                "type": "string",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadPossibleActivationMvnoPlansResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_plans/possible_line_plans",
+      "raw_path": "/rest/service_eai/mvno_plans/possible_line_plans",
+      "operationId": "EaiService_ReadPossibleMvnoLinePlans",
+      "summary": "Read possible mvno line plans",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiReadPossibleMvnoLinePlansRequest",
+            "type": "object",
+            "properties": {
+              "finality": {
+                "$ref_name": "eaiMvnoPlanFinality",
+                "type": "string",
+                "title": "- mpfRecurrence: uso interno apenas",
+                "default": "mpfActivation",
+                "enum": [
+                  "mpfActivation",
+                  "mpfPlanChange",
+                  "mpfRecharge",
+                  "mpfRecurrence"
+                ]
+              },
+              "lineId": {
+                "type": "string"
+              },
+              "listOnlyActive": {
+                "type": "boolean"
+              },
+              "listOnlyVisibleInCustomer": {
+                "type": "boolean"
+              },
+              "resellerPersonId": {
+                "type": "string",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadPossibleMvnoLinePlansResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_plans/valid",
+      "raw_path": "/rest/service_eai/mvno_plans/valid",
+      "operationId": "EaiService_IsValidMvnoPlan",
+      "summary": "Check if mvno plan is valid",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiIsValidMvnoPlanRequest",
+            "type": "object",
+            "properties": {
+              "finality": {
+                "$ref_name": "eaiMvnoPlanFinality",
+                "type": "string",
+                "title": "- mpfRecurrence: uso interno apenas",
+                "default": "mpfActivation",
+                "enum": [
+                  "mpfActivation",
+                  "mpfPlanChange",
+                  "mpfRecharge",
+                  "mpfRecurrence"
+                ]
+              },
+              "lineId": {
+                "type": "string"
+              },
+              "planId": {
+                "type": "string",
+                "format": "uint64"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiIsValidMvnoPlanResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_plans/{id}",
+      "raw_path": "/rest/service_eai/mvno_plans/{id}",
+      "operationId": "EaiService_ReadMvnoPlan",
+      "summary": "Read mvno plan by Id",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiReadMvnoPlanResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/rest/service_eai/mvno_plans/{mvnoPlanId}",
+      "raw_path": "/rest/service_eai/mvno_plans/{mvnoPlanId}",
+      "operationId": "EaiService_DeleteResellerPlan",
+      "summary": "Delete reseller mvno plan",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "mvnoPlanId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "resellerPersonId",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiDeleteResellerPlanResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/rest/service_eai/mvno_plans/{mvnoPlanId}",
+      "raw_path": "/rest/service_eai/mvno_plans/{mvnoPlanId}",
+      "operationId": "EaiService_UpdateResellerPlan",
+      "summary": "Update mvno plan reseller information",
+      "description": "",
+      "group": "04-catalog-plans-products.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "mvnoPlanId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "EaiServiceUpdateResellerPlanBody",
+            "type": "object",
+            "properties": {
+              "mvnoPlanResellerServices": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "eaiMvnoPlanResellerService",
+                  "note": "see definitions"
+                }
+              },
+              "name": {
+                "type": "string"
+              },
+              "resellerPersonId": {
+                "type": "string",
+                "format": "uint64"
+              },
+              "serviceValue": {
+                "type": "number",
+                "format": "double"
+              },
+              "status": {
+                "$ref_name": "commonActiveInactive",
+                "type": "string",
+                "default": "Inactive",
+                "enum": [
+                  "Inactive",
+                  "Active"
+                ]
+              },
+              "visibleInCustomer": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiUpdateResellerPlanResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_portabilities",
+      "raw_path": "/rest/service_eai/mvno_portabilities",
+      "operationId": "EaiService_ReadAllMvnoPortabilities",
+      "summary": "Read all mvno Portabilities",
+      "description": "",
+      "group": "05-portability.md",
+      "parameters": [
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "document",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "msisdn",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "generic",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "portedMsisdn",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "array",
+          "items": {
+            "enum": [
+              "mpsPending",
+              "mpsSent",
+              "mpsCanceled",
+              "mpsSuccess",
+              "mpsError",
+              "mpsCancelPending"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "multi",
+          "name": "status",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "request",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "name": "forecast",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadAllMvnoPortabilitiesResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/mvno_portabilities",
+      "raw_path": "/rest/service_eai/mvno_portabilities",
+      "operationId": "EaiService_CreateMvnoPortability",
+      "summary": "Create a new mvno Portability",
+      "description": "",
+      "group": "05-portability.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "v1eaiCreateMvnoPortabilityRequest",
+            "type": "object",
+            "properties": {
+              "lineId": {
+                "type": "string"
+              },
+              "portedMsisdn": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiCreateMvnoPortabilityResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_portabilities/{id}",
+      "raw_path": "/rest/service_eai/mvno_portabilities/{id}",
+      "operationId": "EaiService_ReadMvnoPortability",
+      "summary": "Read mvno Portability by Id",
+      "description": "",
+      "group": "05-portability.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadMvnoPortabilityResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_portabilities/{id}/history",
+      "raw_path": "/rest/service_eai/mvno_portabilities/{id}/history",
+      "operationId": "EaiService_ReadAllMvnoPortabilityHistory",
+      "summary": "Read mvno Portability history",
+      "description": "",
+      "group": "05-portability.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadAllMvnoPortabilityHistoryResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_portability_status_by_line/{lineId}",
+      "raw_path": "/rest/service_eai/mvno_portability_status_by_line/{lineId}",
+      "operationId": "EaiService_ReadMvnoPortabilityStatusByLine",
+      "summary": "Read mvno Portability status by line",
+      "description": "",
+      "group": "05-portability.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "lineId",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadMvnoPortabilityStatusByLineResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_eai/mvno_sim_card",
+      "raw_path": "/rest/service_eai/mvno_sim_card",
+      "operationId": "EaiService_ReadAllMvnoSimCards",
+      "summary": "Read all mvno sim cards",
+      "description": "",
+      "group": "06-sim-msisdn.md",
+      "parameters": [
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "name": "pagination.page",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "integer",
+          "format": "int64",
+          "description": "Rows per page",
+          "name": "pagination.limit",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "boolean",
+          "name": "useIndex",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiReadAllMvnoSimCardsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/reserve_msisdns",
+      "raw_path": "/rest/service_eai/reserve_msisdns",
+      "operationId": "EaiService_TemporaryReserveMsisdns",
+      "summary": "Reservar lista de números para escolha do usuário na ativação",
+      "description": "",
+      "group": "06-sim-msisdn.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "v1eaiTemporaryReserveMsisdnsRequest",
+            "type": "object",
+            "properties": {
+              "DDD": {
+                "type": "string",
+                "title": "string DDI = 1;"
+              },
+              "currentToken": {
+                "type": "string"
+              },
+              "types": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "v1eaiTemporaryReserveMsisdnsRequestType",
+                  "note": "see definitions"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1eaiTemporaryReserveMsisdnsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/webhook_nfcom_cobilling",
+      "raw_path": "/rest/service_eai/webhook_nfcom_cobilling",
+      "operationId": "EaiService_WebhookNfcomCobilling",
+      "summary": "Webhook NFCOM Cobilling",
+      "description": "",
+      "group": "07-webhooks-nfcom.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiWebhookNfcomCobillingRequest",
+            "type": "object",
+            "properties": {
+              "chave_acesso": {
+                "type": "string"
+              },
+              "cnpj_emitente": {
+                "type": "string"
+              },
+              "cpf_cnpj": {
+                "type": "string"
+              },
+              "data_emissao": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evento": {
+                "type": "string"
+              },
+              "itens": {
+                "type": "array",
+                "items": {
+                  "$ref_name": "eaiWebhookNfcomCobillingItem",
+                  "note": "see definitions"
+                }
+              },
+              "nome_cliente": {
+                "type": "string"
+              },
+              "referencia_boleto": {
+                "type": "string"
+              },
+              "vencimento_boleto": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiWebhookNfcomCobillingResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/rest/service_eai/webhook_nfcom_cobilling_voalle",
+      "raw_path": "/rest/service_eai/webhook_nfcom_cobilling_voalle",
+      "operationId": "EaiService_WebhookNfcomCobillingVoalle",
+      "summary": "Webhook NFCOM Cobilling Voalle",
+      "description": "",
+      "group": "07-webhooks-nfcom.md",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref_name": "eaiWebhookNfcomCobillingVoalleRequest",
+            "type": "object",
+            "properties": {
+              "AccessKey": {
+                "type": "string",
+                "title": "Chave de acesso do documento fiscal gerado"
+              },
+              "Amount": {
+                "type": "number",
+                "format": "double",
+                "title": "Valor do item"
+              },
+              "Competence": {
+                "type": "string",
+                "title": "Competencia"
+              },
+              "DocumentNumber": {
+                "type": "integer",
+                "format": "int64",
+                "title": "Número do documento"
+              },
+              "Id": {
+                "type": "string",
+                "title": "Identificador da emissão de terceiros/co-faturamento no elleven"
+              },
+              "IntegrationCode": {
+                "type": "string"
+              },
+              "IssueDate": {
+                "type": "string",
+                "title": "Data de emissão do documento"
+              },
+              "Person": {
+                "$ref_name": "eaiWebhookNfcomCobillingVoalleRequestPerson",
+                "type": "object",
+                "properties": {
+                  "Address": {
+                    "$ref_name": "eaiWebhookNfcomCobillingVoalleRequestAddress",
+                    "note": "see definitions"
+                  },
+                  "Mail": {
+                    "type": "string",
+                    "title": "Email"
+                  },
+                  "Name": {
+                    "type": "string",
+                    "title": "Nome do cliente"
+                  },
+                  "Phone": {
+                    "type": "string",
+                    "title": "Telefone"
+                  },
+                  "StateRegistration": {
+                    "type": "string",
+                    "title": "Inscrição estadual"
+                  },
+                  "StateRegistrationType": {
+                    "type": "integer",
+                    "format": "int64",
+                    "title": "Tipo da inscrição estadual. 1 - Contribuinte, 2 - Isento, 9 - Não Contribuinte"
+                  },
+                  "TxId": {
+                    "type": "string",
+                    "title": "Numero do documento (CNPJ ou CPF)"
+                  },
+                  "Type": {
+                    "type": "integer",
+                    "format": "int64",
+                    "title": "Tipo do cliente. 1 - Comercial, 2 - Industrial, 3 - Residencial/Pessoa Física, 4 - Produtor Rural, 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95, 6 - Prestador de serviço de telecomunicação responsável pelo recolhimento do imposto incidente sobre a cessão dos meios de rede do prestador do serviço ao usuário final, nos termos do Convênio ICMS 17/13, 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94, 8 - Igrejas e Templos de qualquer natureza, 99 - Outros não especificados anteriormente"
+                  },
+                  "TypeTxId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "title": "Tipo do documento. 1 = CNPJ ou 2 = CPF"
+                  }
+                }
+              },
+              "Serie": {
+                "type": "string",
+                "title": "Série"
+              },
+              "Status": {
+                "type": "integer",
+                "format": "int64",
+                "title": "Status do documento fiscal. 1 = Autorizado ou 9= Cancelado"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "eaiWebhookNfcomCobillingVoalleResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_shared/cities",
+      "raw_path": "/rest/service_shared/cities",
+      "operationId": "SharedService_GetAllCitiesOptions",
+      "summary": "Read all cities",
+      "description": "",
+      "group": "08-shared-geo.md",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uf",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "id",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "in": "query",
+          "schema": null
+        },
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "ibge",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1sharedGetAllCitiesOptionsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_shared/cities/{ibge}",
+      "raw_path": "/rest/service_shared/cities/{ibge}",
+      "operationId": "SharedService_GetCityByIbge",
+      "summary": "Read city by IBGE code.",
+      "description": "",
+      "group": "08-shared-geo.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "ibge",
+          "in": "path",
+          "required": true,
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "sharedGetCityByIbgeResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_shared/countries",
+      "raw_path": "/rest/service_shared/countries",
+      "operationId": "SharedService_GetAllCountriesOptions",
+      "summary": "Read all countries",
+      "description": "",
+      "group": "08-shared-geo.md",
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "sharedGetAllCountriesOptionsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rest/service_shared/states",
+      "raw_path": "/rest/service_shared/states",
+      "operationId": "SharedService_GetAllStatesOptions",
+      "summary": "Read all states",
+      "description": "",
+      "group": "08-shared-geo.md",
+      "parameters": [
+        {
+          "type": "string",
+          "format": "uint64",
+          "name": "countryId",
+          "in": "query",
+          "schema": null
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A successful response.",
+          "schema_ref": "v1sharedGetAllStatesOptionsResponse"
+        },
+        "400": {
+          "description": "Bad request",
+          "schema_ref": "googlerpcStatus"
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema_ref": ""
+        },
+        "403": {
+          "description": "Forbidden",
+          "schema_ref": ""
+        },
+        "500": {
+          "description": "Internal Error",
+          "schema_ref": "googlerpcStatus"
+        },
+        "default": {
+          "description": "An unexpected error response.",
+          "schema_ref": "googlerpcStatus"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men32.jpg' WHERE id = 'a0112aa4-7e3b-4f42-88be-5c582eef8a07';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/women44.jpg' WHERE id = 'b2fcc126-962e-4148-a1c9-ed912100dbaa';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men45.jpg' WHERE id = '7addf372-be36-48c7-9c3a-016060b8d906';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/women68.jpg' WHERE id = '8d4cd6df-20df-4658-9f24-3cf641bdd308';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men22.jpg' WHERE id = 'ebf64e81-429a-4864-915d-ec8288bd5ded';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/women25.jpg' WHERE id = 'a316779f-96dc-4e24-b56a-0bf0ba4c6315';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men56.jpg' WHERE id = '2cfd6b9e-dec9-4ba2-8745-228c6c1e05a0';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/women33.jpg' WHERE id = '16cf62cd-f18f-46a9-bd2a-128029538910';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men75.jpg' WHERE id = '493d9bd4-a333-4489-a3b8-3118cb67b2d5';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/women52.jpg' WHERE id = '9a1e094b-1444-42b3-b614-935806b177df';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men41.jpg' WHERE id = '942c0358-4cc2-4e3d-bf1a-5602f165e76e';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/women71.jpg' WHERE id = '3a4fb348-9768-44f6-9d80-16848c70c56d';
+UPDATE public.testimonials SET photo_url = 'https://lcbgiersxjeyjcstrxmc.supabase.co/storage/v1/object/public/site-assets/testimonials/men62.jpg' WHERE id = 'd7adfc24-8cf2-4b86-94f7-950ee763e8bc';

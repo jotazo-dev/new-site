@@ -1,0 +1,1 @@
+UPDATE public.eai_config SET base_url='https://hml-mvno.eai.net.br', oauth_url='https://hml-mvno.eai.net.br/user/authenticate'; DELETE FROM public.eai_token_cache WHERE id=1;

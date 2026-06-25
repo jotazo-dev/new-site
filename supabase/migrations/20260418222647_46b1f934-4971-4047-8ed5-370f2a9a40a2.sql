@@ -1,0 +1,1 @@
+ALTER TABLE public.plans ADD COLUMN IF NOT EXISTS chip_type text NOT NULL DEFAULT '5g';
