@@ -139,10 +139,8 @@ export function SiteHeader() {
   const bcShowBadge = (settings["black_chip_badge"] ?? "true") !== "false";
   const bcGlowBorder = (settings["black_chip_glow_border"] ?? "true") !== "false";
 
-  // Avoid theme flash: while loading, keep header invisible (only on first paint).
-  if (settingsLoading && Object.keys(settings).length === 0) {
-    return <header className="sticky top-0 z-50 w-full invisible" aria-hidden="true" />;
-  }
+  // Header always renders immediately with fallback defaults — no loading gate.
+  // Settings from Supabase will hydrate in background without blocking UI.
 
   const isWhiteBlueHover = headerTheme === "white_blue_hover";
   const isWhite = !isBlackChip && (headerTheme === "white" || isWhiteBlueHover);
